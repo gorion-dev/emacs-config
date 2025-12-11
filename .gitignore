@@ -1,0 +1,8 @@
+*.elc
+backups/
+auto-save-list/
+*.log
+*~
+eln-cache/
+elpa/
+places
