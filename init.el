@@ -1,3 +1,4 @@
+
 ;; Basic init file with minimal structure
 ;; This will load our own modules from ~/.emacs.d/lisp/
 
@@ -18,6 +19,6 @@
 (require 'editor)  ;; basic editing behavior
 
 ;; Org and Zettelkasten modules will come later step-by-step
-;; (require 'org-base)
+(require 'org-base)
 ;; (require 'zk)
 ;; (require 'keys)

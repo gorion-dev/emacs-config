@@ -18,5 +18,8 @@
 ;; Set a gentle default font size
 (set-face-attribute 'default nil :height 120)
 
+;; Soft wrap long lines
+(global-visual-line-mode 1)
+
 (provide 'ui)
 ;;; ui.el ends here
