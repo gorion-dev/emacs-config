@@ -6,3 +6,7 @@ auto-save-list/
 eln-cache/
 elpa/
 places
+.DS_Store
+ido.last
+org-persist/
+recentf
