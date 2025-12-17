@@ -14,6 +14,15 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
+(use-package pdf-tools
+         :demand t
+         :init
+         (pdf-tools-install)
+         :config
+         (add-hook 'pdf-isearch-minor-mode-hook (lambda () (ctrlf-local-mode -1)))
+         (use-package org-pdftools
+           :hook (org-mode . org-pdftools-setup-link)))
+
 ;; Load modules
 (require 'ui)           ;; UI tweaks
 (require 'editor)       ;; basic editing behavior
@@ -26,7 +35,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(visual-fill-column)))
+ '(package-selected-packages '(pdf-tools visual-fill-column)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
