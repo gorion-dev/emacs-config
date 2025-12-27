@@ -46,3 +46,6 @@
 
 ;; Automatically install missing packages declared with use-package
 (setq use-package-always-ensure t)
+
+;; Enable visual line wrapping globally
+(global-visual-line-mode 1)
