@@ -1,44 +1,29 @@
+;; Disable the startup screen and message
+(setq inhibit-startup-message t)
 
-;; Basic init file with minimal structure
-;; This will load our own modules from ~/.emacs.d/lisp/
+;; Disable the visible scroll bar
+(scroll-bar-mode -1)
 
-;; Add custom module directory to load-path
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;; Disable the toolbar (icons at the top)
+(tool-bar-mode -1)
 
-;; Show startup time and garbage collector info
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (message "Emacs loaded in %s with %d GC"
-                     (format "%.2f seconds"
-                             (float-time
-                              (time-subtract after-init-time before-init-time)))
-                     gcs-done)))
+;; Disable the menu bar (File, Edit, etc.)
+(menu-bar-mode -1)
 
-(use-package pdf-tools
-         :demand t
-         :init
-         (pdf-tools-install)
-         :config
-         (add-hook 'pdf-isearch-minor-mode-hook (lambda () (ctrlf-local-mode -1)))
-         (use-package org-pdftools
-           :hook (org-mode . org-pdftools-setup-link)))
+;; Disable mouse hover tooltips
+(tooltip-mode -1)
 
-;; Load modules
-(require 'ui)           ;; UI tweaks
-(require 'editor)       ;; basic editing behavior
-(require 'org-base)     ;; image handling for Org mode
-(require 'org-images)
-;; (require 'zk)
-;; (require 'keys)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(pdf-tools visual-fill-column)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Add some space on the left and right edges of the window
+;; (used for indicators like line continuation, errors, etc.)
+(set-fringe-mode 10)
+
+;; Flash the screen instead of making a sound on errors
+(setq visible-bell t)
+
+;; Set the default font size
+;; Height is in 1/10 pt, so 140 = 14pt
+
+(set-face-attribute 'default nil :height 140)
+
+;; Setup theme
+(load-theme 'tango-dark)
