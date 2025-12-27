@@ -27,3 +27,22 @@
 
 ;; Setup theme
 (load-theme 'tango-dark)
+
+
+;; Load the built-in package manager
+(package-initialize)
+
+;; Refresh package archive contents if not already available
+;; This avoids unnecessary network calls on every startup
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Install use-package if it is not already installed
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+;; Load use-package
+(require 'use-package)
+
+;; Automatically install missing packages declared with use-package
+(setq use-package-always-ensure t)
