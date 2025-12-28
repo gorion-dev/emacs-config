@@ -28,8 +28,18 @@
 ;; Setup theme
 (load-theme 'tango-dark)
 
-
 ;; Load the built-in package manager
+(require 'package)
+
+;; Configure package repositories
+;; ELPA  - official GNU repository
+;; Org   - latest Org mode releases
+;; MELPA - large community repository with frequent updates
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+;; Initialize installed packages and update load-path
 (package-initialize)
 
 ;; Refresh package archive contents if not already available
@@ -49,3 +59,7 @@
 
 ;; Enable visual line wrapping globally
 (global-visual-line-mode 1)
+
+;; Log executed commands and key presses
+(use-package command-log-mode)
+
