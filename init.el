@@ -20,6 +20,9 @@
 ;; Flash the screen instead of making a sound on errors
 (setq visible-bell t)
 
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 ;; Set the default font size
 ;; Height is in 1/10 pt, so 140 = 14pt
 
