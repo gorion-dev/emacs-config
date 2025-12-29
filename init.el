@@ -59,7 +59,3 @@
 
 ;; Enable visual line wrapping globally
 (global-visual-line-mode 1)
-
-;; Log executed commands and key presses
-(use-package command-log-mode)
-
