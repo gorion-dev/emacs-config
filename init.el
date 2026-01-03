@@ -29,7 +29,7 @@
 (set-face-attribute 'default nil :height 140)
 
 ;; Setup theme
-(load-theme 'tango-dark)
+(load-theme 'wombat)
 
 ;; Load the built-in package manager
 (require 'package)
@@ -62,3 +62,16 @@
 
 ;; Enable visual line wrapping globally
 (global-visual-line-mode 1)
+
+;; --------------------------------------------------
+;; Ivy completion framework configuration
+;; --------------------------------------------------
+
+(use-package ivy
+  ;; Key bindings
+  :bind (
+         ;; Use Swiper for interactive in-buffer search instead of isearch
+         ("C-s" . swiper)
+  ;; Enable Ivy globally
+  :config
+  (ivy-mode 1))
