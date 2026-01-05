@@ -74,4 +74,11 @@
          ("C-s" . swiper)
   ;; Enable Ivy globally
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)))
+
+;; --------------------------------------------------
+;; Kotlin support
+;; --------------------------------------------------
+
+;; Major mode for editing Kotlin source files
+(use-package kotlin-mode)
