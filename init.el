@@ -68,13 +68,24 @@
 ;; --------------------------------------------------
 
 (use-package ivy
-  ;; Key bindings
-  :bind (
-         ;; Use Swiper for interactive in-buffer search instead of isearch
-         ("C-s" . swiper)
-  ;; Enable Ivy globally
-  :config
-  (ivy-mode 1)))
+    :diminish ;; hide Ivy mode from status bar
+    ;; Key bindings section
+    :bind (("C-s" . swiper) ;; call swiper
+  	 ;; Key bindings specific to certain mods
+           :map ivy-minibuffer-map
+           ("TAB" . ivy-alt-done)	
+           ("C-l" . ivy-alt-done)
+           ("C-j" . ivy-next-line)
+           ("C-k" . ivy-previous-line)
+           :map ivy-switch-buffer-map
+           ("C-k" . ivy-previous-line)
+           ("C-l" . ivy-done)
+           ("C-d" . ivy-switch-buffer-kill)
+           :map ivy-reverse-i-search-map
+           ("C-k" . ivy-previous-line)
+           ("C-d" . ivy-reverse-i-search-kill))
+    :config
+    (ivy-mode 1))
 
 ;; --------------------------------------------------
 ;; Kotlin support
