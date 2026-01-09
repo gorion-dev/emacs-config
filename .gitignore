@@ -10,3 +10,4 @@ places
 ido.last
 org-persist/
 recentf
+*.db
