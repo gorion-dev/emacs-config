@@ -94,7 +94,6 @@
 ;; Major mode for editing Kotlin source files
 (use-package kotlin-mode)
 
-
 ;; --------------------------------------------------
 ;; Org-roam configuration
 ;; --------------------------------------------------
@@ -104,6 +103,11 @@
   :custom
   (org-roam-directory "~/notes")
   (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "%?"
+      :if-new (file+head "${title}.org" "#+title: ${title}\n")
+      :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
