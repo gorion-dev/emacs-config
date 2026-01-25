@@ -31,6 +31,10 @@
 ;; Setup theme
 (load-theme 'wombat)
 
+;; Show inline images in .org files
+(setq org-startup-with-inline-images t)
+(setq org-display-remote-inline-images 'cache)
+
 ;; Load the built-in package manager
 (require 'package)
 
@@ -115,3 +119,12 @@
          ("C-M-i"    . completion-at-point))
   :config
   (org-roam-setup))
+
+;; --------------------------------------------------
+;; Org-babel configuration
+;; --------------------------------------------------
+
+;; Use python3 as the interpreter for org-babel.
+(setq org-babel-python-command "python3")
+;; Disable confirmation prompts when evaluating org-babel source blocks.
+(setq org-confirm-babel-evaluate nil)
