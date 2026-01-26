@@ -124,7 +124,13 @@
 ;; Org-babel configuration
 ;; --------------------------------------------------
 
+;; Enable Python support in org-babel.
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+
 ;; Use python3 as the interpreter for org-babel.
 (setq org-babel-python-command "python3")
+
 ;; Disable confirmation prompts when evaluating org-babel source blocks.
 (setq org-confirm-babel-evaluate nil)
