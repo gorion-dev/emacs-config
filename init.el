@@ -141,3 +141,15 @@
 
 ;; Define org-agenda directory
 (setq org-agenda-files (quote ("~/notes")))
+
+;; --------------------------------------------------
+;; Treemacs configuration
+;; --------------------------------------------------
+(use-package treemacs
+  :ensure t
+  :config
+  ;; Treemacs as left panel, and not like plain buffer
+  (setq treemacs-width 30
+	treemacs-is-never-other-window t)
+  ;; Follow to project.el projects
+  (treemacs-project-follow-mode t))
