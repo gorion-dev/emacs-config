@@ -153,3 +153,7 @@
 	treemacs-is-never-other-window t)
   ;; Follow to project.el projects
   (treemacs-project-follow-mode t))
+
+(use-package eglot
+  :hook (python-mode . eglot-ensure))
+
