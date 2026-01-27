@@ -134,3 +134,10 @@
 
 ;; Disable confirmation prompts when evaluating org-babel source blocks.
 (setq org-confirm-babel-evaluate nil)
+
+;; --------------------------------------------------
+;; Org-agenda configuration
+;; --------------------------------------------------
+
+;; Define org-agenda directory
+(setq org-agenda-files (quote ("~/notes")))
