@@ -90,7 +90,8 @@
            ("C-d" . ivy-reverse-i-search-kill))
     :config
     (ivy-mode 1))
-
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))
 ;; --------------------------------------------------
 ;; Kotlin support
 ;; --------------------------------------------------
@@ -110,11 +111,12 @@
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "${title}.org" "#+title: ${title}\n")
+      :if-new (file+head "${slug}.org" "#+title: ${title}\n")
       :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
+	 ("C-c n c" . org-roam-capture)
          :map org-mode-map
          ("C-M-i"    . completion-at-point))
   :config
@@ -154,6 +156,14 @@
   ;; Follow to project.el projects
   (treemacs-project-follow-mode t))
 
+;; --------------------------------------------------
+;; Eglot configuration
+;; --------------------------------------------------
 (use-package eglot
   :hook (python-mode . eglot-ensure))
 
+;; Make ~/.local/bin visible to Emacs (pipx, user tools)
+(let ((local-bin (expand-file-name "~/.local/bin")))
+  (when (file-directory-p local-bin)
+    (add-to-list 'exec-path local-bin)
+    (setenv "PATH" (concat local-bin ":" (getenv "PATH")))))
