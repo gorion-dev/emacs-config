@@ -23,6 +23,9 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; Allow Space in completion minibuffer
+(define-key minibuffer-local-completion-map (kbd "SPC") #'self-insert-command)
+
 ;; Set the default font size
 ;; Height is in 1/10 pt, so 140 = 14pt
 
@@ -67,31 +70,6 @@
 ;; Enable visual line wrapping globally
 (global-visual-line-mode 1)
 
-;; --------------------------------------------------
-;; Ivy completion framework configuration
-;; --------------------------------------------------
-
-(use-package ivy
-    :diminish ;; hide Ivy mode from status bar
-    ;; Key bindings section
-    :bind (("C-s" . swiper) ;; call swiper
-  	 ;; Key bindings specific to certain mods
-           :map ivy-minibuffer-map
-           ("TAB" . ivy-alt-done)	
-           ("C-l" . ivy-alt-done)
-           ("C-j" . ivy-next-line)
-           ("C-k" . ivy-previous-line)
-           :map ivy-switch-buffer-map
-           ("C-k" . ivy-previous-line)
-           ("C-l" . ivy-done)
-           ("C-d" . ivy-switch-buffer-kill)
-           :map ivy-reverse-i-search-map
-           ("C-k" . ivy-previous-line)
-           ("C-d" . ivy-reverse-i-search-kill))
-    :config
-    (ivy-mode 1))
-(setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
 ;; --------------------------------------------------
 ;; Kotlin support
 ;; --------------------------------------------------
