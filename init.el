@@ -89,7 +89,7 @@
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "${slug}.org" "#+title: ${title}\n")
+      :if-new (file+head "${title}.org" "#+title: ${title}\n")
       :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -114,6 +114,12 @@
 
 ;; Disable confirmation prompts when evaluating org-babel source blocks.
 (setq org-confirm-babel-evaluate nil)
+
+;; Replace tabs with spaces
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)))
+(setq python-indent-offset 4)
 
 ;; --------------------------------------------------
 ;; Org-agenda configuration
@@ -146,6 +152,9 @@
     (add-to-list 'exec-path local-bin)
     (setenv "PATH" (concat local-bin ":" (getenv "PATH")))))
 
+;; --------------------------------------------------
+;; Themes configuration
+;; --------------------------------------------------
 
 (use-package doom-themes
   :ensure t
@@ -172,8 +181,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(command-log-mode doom-themes ivy kotlin-mode org-roam pdf-tools
-		      treemacs visual-fill-column)))
+   '(command-log-mode doom-themes ivy kotlin-mode org-roam pdf-tools treemacs visual-fill-column)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
