@@ -27,9 +27,8 @@
 (define-key minibuffer-local-completion-map (kbd "SPC") #'self-insert-command)
 
 ;; Set the default font size
-;; Height is in 1/10 pt, so 140 = 14pt
-
-(set-face-attribute 'default nil :height 140)
+;; Height is in 1/10 pt, so 130 = 13pt
+(set-face-attribute 'default nil :height 130)
 
 ;; Setup theme
 (load-theme 'wombat)
