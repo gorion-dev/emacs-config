@@ -112,14 +112,27 @@
 ;; Use python3 as the interpreter for org-babel.
 (setq org-babel-python-command "python3")
 
+;; Use spaces instead of tabs in all modes by default
+(setq indent-tabs-mode nil)
+
+;; Set the standard Emacs Python indentation to 4 spaces
+(setq python-indent-offset 4)
+
+;; Configure Org-babel source block indentation behavior
+(setq org-edit-src-content-indentation 0) ;; Adjusts indentation inside the org buffer
+(setq org-src-preserve-indentation nil)  ;; Let python-mode handle indentation
+
+;; Hook into python-mode to ensure correct indentation settings when editing source blocks
+(defun my-python-mode-hook ()
+  "Custom settings for python-mode."
+  (setq indent-tabs-mode nil        ;; Ensure no tabs
+        tab-width 4)               ;; Set tab width to 4 spaces
+  (python-mode-indent-level 4))    ;; Set indentation level to 4 spaces
+
+(add-hook 'python-mode-hook 'my-python-mode-hook)
+
 ;; Disable confirmation prompts when evaluating org-babel source blocks.
 (setq org-confirm-babel-evaluate nil)
-
-;; Replace tabs with spaces
-(add-hook 'python-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)))
-(setq python-indent-offset 4)
 
 ;; --------------------------------------------------
 ;; Org-agenda configuration
@@ -180,6 +193,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   '("/home/gorion/notes/projects/sgok/add-red-circle-around-thickener-motors.org" "/home/gorion/notes/calendar/timeblocks.org" "/home/gorion/notes/sources/python-developer-plus/python-developer-plus.org" "/home/gorion/notes/1_4_1_branching.org"))
  '(package-selected-packages
    '(command-log-mode doom-themes ivy kotlin-mode org-roam pdf-tools treemacs visual-fill-column)))
 (custom-set-faces
