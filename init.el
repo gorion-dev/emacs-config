@@ -168,6 +168,8 @@
 ;; Themes configuration
 ;; --------------------------------------------------
 
+(use-package nerd-icons)
+
 (use-package doom-themes
   :ensure t
   :custom
@@ -182,7 +184,7 @@
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (nerd-icons must be installed!)
-  ;; (doom-themes-neotree-config)
+  (doom-themes-neotree-config)
   ;; or for treemacs users
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
@@ -193,9 +195,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
-   '("/home/gorion/notes/projects/sgok/add-red-circle-around-thickener-motors.org" "/home/gorion/notes/calendar/timeblocks.org" "/home/gorion/notes/sources/python-developer-plus/python-developer-plus.org" "/home/gorion/notes/1_4_1_branching.org"))
+   '("/home/gorion/notes/projects/sgok/add-red-circle-around-thickener-motors.org"
+     "/home/gorion/notes/calendar/timeblocks.org"
+     "/home/gorion/notes/sources/python-developer-plus/python-developer-plus.org"
+     "/home/gorion/notes/1_4_1_branching.org"))
  '(package-selected-packages
-   '(command-log-mode doom-themes ivy kotlin-mode org-roam pdf-tools treemacs visual-fill-column)))
+   '(command-log-mode doom-themes ivy kotlin-mode nerd-icons org-roam
+		      pdf-tools treemacs visual-fill-column)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
