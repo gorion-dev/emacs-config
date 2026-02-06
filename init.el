@@ -20,6 +20,9 @@
 ;; Flash the screen instead of making a sound on errors
 (setq visible-bell t)
 
+;; Hide emphasis markers in org docs
+(setq org-hide-emphasis-markers t)
+
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -195,13 +198,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
-   '("/home/gorion/notes/projects/sgok/add-red-circle-around-thickener-motors.org"
-     "/home/gorion/notes/calendar/timeblocks.org"
-     "/home/gorion/notes/sources/python-developer-plus/python-developer-plus.org"
-     "/home/gorion/notes/1_4_1_branching.org"))
+   '("/home/gorion/notes/projects/sgok/add-red-circle-around-thickener-motors.org" "/home/gorion/notes/calendar/timeblocks.org" "/home/gorion/notes/sources/python-developer-plus/python-developer-plus.org" "/home/gorion/notes/1_4_1_branching.org"))
  '(package-selected-packages
-   '(command-log-mode doom-themes ivy kotlin-mode nerd-icons org-roam
-		      pdf-tools treemacs visual-fill-column)))
+   '(command-log-mode doom-themes ivy kotlin-mode nerd-icons org-roam pdf-tools treemacs visual-fill-column)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
