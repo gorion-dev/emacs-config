@@ -23,6 +23,9 @@
 ;; Hide emphasis markers in org docs
 (setq org-hide-emphasis-markers t)
 
+;; Display line numbers
+(global-display-line-numbers-mode t)
+
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -33,16 +36,13 @@
 ;; Height is in 1/10 pt, so 130 = 13pt
 (set-face-attribute 'default nil :height 130)
 
-;; Setup theme
-(load-theme 'wombat)
-
 ;; Show inline images in .org files
 (setq org-startup-with-inline-images t)
-
-;; Load the built-in package manager
-(require 'package)
+(setq org-image-actual-width nil)
+(setq org-image-max-width 600)
 
 ;; Configure package repositories
+(require 'package)
 ;; ELPA  - official GNU repository
 ;; Org   - latest Org mode releases
 ;; MELPA - large community repository with frequent updates
@@ -70,13 +70,6 @@
 
 ;; Enable visual line wrapping globally
 (global-visual-line-mode 1)
-
-;; --------------------------------------------------
-;; Kotlin support
-;; --------------------------------------------------
-
-;; Major mode for editing Kotlin source files
-(use-package kotlin-mode)
 
 ;; --------------------------------------------------
 ;; Org-roam configuration
@@ -110,37 +103,27 @@
  'org-babel-load-languages
  '((python . t)))
 
-;; Use python3 as the interpreter for org-babel.
+;; Use python3 for org-babel.
 (setq org-babel-python-command "python3")
 
-;; Use spaces instead of tabs in all modes by default
+;; Use spaces instead of tabs
 (setq indent-tabs-mode nil)
 
-;; Set the standard Emacs Python indentation to 4 spaces
-(setq python-indent-offset 4)
-
-;; Configure Org-babel source block indentation behavior
+;; Org source block indentation
 (setq org-edit-src-content-indentation 0) ;; Adjusts indentation inside the org buffer
-(setq org-src-preserve-indentation nil)  ;; Let python-mode handle indentation
+(setq org-src-preserve-indentation nil)   ;; Let python-mode handle indentation
 
-;; Hook into python-mode to ensure correct indentation settings when editing source blocks
+;; Python indentation
 (defun my-python-mode-hook ()
   "Custom settings for python-mode."
   (setq indent-tabs-mode nil        ;; Ensure no tabs
-        tab-width 4)               ;; Set tab width to 4 spaces
-  (python-mode-indent-level 4))    ;; Set indentation level to 4 spaces
+        tab-width 4                 ;; Set tab width to 4 spaces
+        python-indent-offset 4))    ;; Set indentation level to 4 spaces
 
-(add-hook 'python-mode-hook 'my-python-mode-hook)
+(add-hook 'python-mode-hook #'my-python-mode-hook)
 
-;; Disable confirmation prompts when evaluating org-babel source blocks.
+;; Disable confirmation for babel evaluation
 (setq org-confirm-babel-evaluate nil)
-
-;; --------------------------------------------------
-;; Org-agenda configuration
-;; --------------------------------------------------
-
-;; Define org-agenda directory
-(setq org-agenda-files (quote ("~/notes")))
 
 ;; --------------------------------------------------
 ;; Treemacs configuration
@@ -178,31 +161,15 @@
   ;; Global settings (defaults)
   (doom-themes-enable-bold t)   ; if nil, bold is universally disabled
   (doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; for treemacs users
-  (doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-theme "doom-atom")
   :config
   (load-theme 'doom-one t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (nerd-icons must be installed!)
+  ;; Enable custom neotree theme
   (doom-themes-neotree-config)
   ;; or for treemacs users
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   '("/home/gorion/notes/projects/sgok/add-red-circle-around-thickener-motors.org" "/home/gorion/notes/calendar/timeblocks.org" "/home/gorion/notes/sources/python-developer-plus/python-developer-plus.org"))
- '(package-selected-packages
-   '(org-remoteimg command-log-mode doom-themes ivy kotlin-mode nerd-icons org-roam pdf-tools treemacs visual-fill-column)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
